@@ -1,18 +1,9 @@
 import React from "react";
 import "./App.css";
+import Dedication from "./Dedication";
 
 function App() {
-  function getMessage() {
-    fetch("http://localhost:3000/api/hello")
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(json) {
-        console.log(json);
-        return json;
-      });
-  }
-  return <button onClick={getMessage}> click</button>;
+  return <Dedication message="I dedicate this to Jasmine" name="Mike" />;
 }
 
 export default App;
