@@ -1,8 +1,9 @@
 import React from "react";
+import "./App.css";
 
 const Dedication = props => {
   return (
-    <div>
+    <div className="dedication">
       <div>{props.message}</div>
       <div>~{props.name}</div>
     </div>
