@@ -1,3 +1,5 @@
+require("dotenv").config();
+const db = require("./queries");
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -10,6 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/api/hello", (req, res) => {
   res.send({ express: "Hello From Express" });
 });
+
+app.post("/api/create_dedication", db.createDedication);
+
+app.get("/api/get_dedications", db.getDedications);
 
 app.post("/api/world", (req, res) => {
   console.log(req.body);
