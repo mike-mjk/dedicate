@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import CreateDedication from "./CreateDedication";
-import Dedication from "./Dedication";
+import DedicationList from "./DedicationList";
 
 class App extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <CreateDedication />
-        <Dedication message={message} name={name} />
+        <DedicationList />
       </React.Fragment>
     );
   }

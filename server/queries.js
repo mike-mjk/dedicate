@@ -17,16 +17,16 @@ const getDedications = (req, res) => {
 };
 
 const createDedication = (req, res) => {
-  const { name } = request.body;
+  const { name, message } = req.body;
 
   pool.query(
-    "INSERT INTO dedicate (name) VALUES ($1",
-    [name],
+    "INSERT INTO dedications (name, message) VALUES ($1, $2)",
+    [name, message],
     (error, results) => {
       if (error) {
         throw error;
       }
-      res.status(201).send(`Dedication created ${result}`);
+      res.status(201).send(`Dedication created`);
     }
   );
 };

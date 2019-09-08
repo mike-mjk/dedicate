@@ -4,18 +4,26 @@ class CreateDedication extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { name: "" };
+    this.state = { name: "", message: "" };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ name: event.target.value });
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   }
 
   handleSubmit(event) {
+    console.log(event);
     event.preventDefault();
-    console.log("name is ", this.state.name);
+    fetch("/api/create_dedication", {
+      method: "POST",
+      body: JSON.stringify(this.state),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
   }
   render() {
     return (
@@ -24,10 +32,21 @@ class CreateDedication extends React.Component {
           Name
           <input
             type="text"
+            name="name"
             value={this.state.name}
             onChange={this.handleChange}
           ></input>
         </label>
+        <label>
+          Message
+          <input
+            type="text"
+            name="message"
+            value={this.state.message}
+            onChange={this.handleChange}
+          ></input>
+        </label>
+        <input type="submit"></input>
       </form>
     );
   }
