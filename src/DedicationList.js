@@ -6,7 +6,7 @@ class DedicationList extends React.Component {
     super(props);
 
     this.state = {
-      dedications: [{ message: "", name: "" }]
+      dedications: [{ id: 0, message: "", name: "" }]
     };
   }
 
@@ -23,8 +23,8 @@ class DedicationList extends React.Component {
 
   renderDedications() {
     return this.state.dedications.map(dedication => {
-      const { name, message } = dedication;
-      return <Dedication name={name} message={message} />;
+      const { name, message, id } = dedication;
+      return <Dedication key={id} name={name} message={message} />;
     });
   }
 
